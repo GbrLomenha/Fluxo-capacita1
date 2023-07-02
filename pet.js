@@ -119,7 +119,7 @@ class Sistema{
         var novoID = Math.floor(Math.random() * 9000) + 1000;
         
         //Adiciona ao Array de Funcionarios
-        var novoFunc = new Funcionario(novoID,novoUser,senha)
+        var novoFunc = new Funcionario(novoID,novoUser,novaSenha)
         this.funcionarios.push(novoFunc);
 
         //Imprime as informaões do novo cadastro
@@ -139,7 +139,7 @@ class Sistema{
             }
         }     
         //procura o usuario pelo ID
-        for(var i=0;i<this.funcionarios.length;i++){
+        for(var i=0; i < this.funcionarios.length; i++){
             if(id == this.funcionarios[i].idFunc){
                 var usuario = this.funcionarios[i];
                 break
