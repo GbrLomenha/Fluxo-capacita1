@@ -96,7 +96,7 @@ class Sistema{
 
     //Tela funcionário
     telaFuncionário(usuario,idDoUsuario){
-        console.log('Bem-vindo, ${usuário}! -MENU-\n1.\n2.\n3.')
+        console.log(`Bem-vindo, ${usuario}! -MENU-\n1.\n2.\n3.`)
     }
 
 
@@ -107,7 +107,7 @@ class Sistema{
         //verifica senha
         var senha = true
         while(senha == true){
-            let novaSenha = input("Digite a nova senha: ");
+            var novaSenha = input("Digite a nova senha: ");
             let verificar = input("Digite confirme a senha: ")
             if (verificar!=novaSenha){
                 console.log("As senhas não coincidem.")
