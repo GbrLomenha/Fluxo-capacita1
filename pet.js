@@ -96,7 +96,69 @@ class Sistema{
 
     //Tela funcionário
     telaFuncionário(usuario,idDoUsuario){
-        console.log(`Bem-vindo, ${usuario}! -MENU-\n1.\n2.\n3.`)
+        while(true){
+            var opcaoInicio = parseInt(input(`
+        Bem-vindo, ${usuario}!
+        -MENU-
+        1. Ver meus dados
+        2. Modificar meus dados
+        3. Ver lista de Clientes
+        4. Ver lista de Pets
+        5. Ver lista de Consultas
+        6. Ver lista de Funcionários
+        7. Marcar Consulta
+        8. Mudar Status de Consulta
+        9. Remover Cliente
+        10. Remover Pet
+        11. Cancelar Consulta
+        12. Remover Funcionário
+        13. Fazer Logout`))
+
+        switch (opcaoInicio) {
+            case 1:
+              // Código para a opção 1
+              break;
+            case 2:
+              // Código para a opção 2
+              break;
+            case 3:
+              // Código para a opção 3
+              break;
+            case 4:
+              // Código para a opção 4
+              break;
+            case 5:
+              // Código para a opção 5
+              break;
+            case 6:
+              // Código para a opção 6
+              break;
+            case 7:
+              // Código para a opção 7
+              break;
+            case 8:
+              // Código para a opção 8
+              break;
+            case 9:
+              // Código para a opção 9
+              break;
+            case 10:
+              // Código para a opção 10
+              break;
+            case 11:
+              // Código para a opção 11
+              break;
+            case 12:
+              // Código para a opção 12
+              break;
+            case 13:
+              // Código para a opção 13
+              break;
+            default:
+              console.log("Opção Inválida.")
+              break;
+          }
+        }                        
     }
 
 
