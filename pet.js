@@ -483,7 +483,17 @@ O que deseja modificar?
     //Manipular Consulta
 
     mostrarConsultas(){
-
+        var datas = []
+        //Verifica se há consultas marcadas
+        if(this.consultas.length == 0){
+            console.log("Nenhuma Consulta Marcada")
+        }
+        //Havendo, imprime
+        else{
+            for(let c=0; c<this.consultas.length; c++){
+                
+            }
+        }
     }
 
     marcarConsulta(usuario){
@@ -492,10 +502,47 @@ O que deseja modificar?
         switch(resposta){
             //REMARCAR CONSULTA
             case 'r':
-                
-                break
+                var cliente = input('Digite o nome do cliente: ')
+                var day = input("Digite o dia da consulta: ")
+                var month = input("Digite o mês da consulta: ")
+                var year = input("Digite o ano da consulta: ")
 
-            //MARCAR CONSULTA
+                //Procura a consulta
+                for(let c=0; c<this.consultas.length; c++){
+                    if(cliente==this.consultas[c].nomeCliente){
+                        if(this.consultas[c].data.getDay == day && this.consultas[c].data.getMonth == month && this.consultas[c].data.getFullYear == year){
+                            var consult = this.consultas[c]
+                            break
+                        }
+                    }
+                }
+                // Altera data
+                console.log("Remarcando consulta")
+                console.log(`Clinte: ${consult.nomeCliente}\nPet: ${consult.nomeAnimal}\nFuncionario: ${consult.nomeFunc}\n`)
+                //Solicita a nova data
+                console.log("Digite a nova data da consulta")
+                var newDia = input("Dia: ")
+                consult.data.setDate(newDia)
+
+                var newMes = input("Mês: ")
+                consult.data.setMonth(newMes)
+
+                var newAno = input("Ano: ")
+                consult.date.setFullYear(newAno)
+
+                //Imprimindo Consulta
+                console.log(`
+Consulta Remarcada:
+Cliente: ${consult.nomeCliente}
+Pet: ${consult.nomeAnimal}
+Data: ${consult.data.getDay}/${consult.data.getMonth}/${consult.data.getFullYear}
+Funcionário: ${consult.nomeFunc}
+Status: ${consult.status}`)
+                  
+                break
+                    
+            
+                //MARCAR CONSULTA
             case 'm':
                 //Pega o nome do cliente para consulta
                 var nomeCliente = input("Digite o nome do cliente: ")
@@ -532,26 +579,26 @@ O que deseja modificar?
                         }
 
                     }
-                }
-                break
-            // OPÇÃO INVÁLIDA
-            default:
-                console.log("Resposta inválida.")
-                return
-        }
-        
-        //Imprimindo Consulta
-        console.log(`Consulta:
+                //Imprimindo Consulta
+                console.log(`Consulta:
 Cliente: ${consulta.nomeCliente}
 Pet: ${consulta.nomeAnimal}
 Data: ${consulta.data.getDay}/${consulta.data.getMonth}/${consulta.data.getFullYear}
 Funcionário: ${consulta.nomeFunc}
-Status: ${consulta.status}`)  
+Status: ${consulta.status}`)
+                }
+                break
+
+                // OPÇÃO INVÁLIDA
+            default:
+                console.log("Resposta inválida.")
+                return
+        }
+    
     }
 
 
 }
-
 
 
 
