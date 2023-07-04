@@ -138,7 +138,7 @@ Bem-vindo,${usuario.user}!
                     this.mostrarPets()
                     break;
                 case 5:
-                    // Código para a opção 5
+                    this.mostrarConsultas()
                     break;
                 case 6:
                     this.mostrarFuncionarios()
@@ -277,7 +277,7 @@ O que deseja modificar?
                 usuario.senha = input("Digite a nova senha: ")
                 break
             case 3:
-                return undefined
+                return 
             default:
                 console.log("Oção inválida.")
 
@@ -287,7 +287,7 @@ O que deseja modificar?
     }
 
     mostrarFuncionarios(){
-        if(this.funcionarios.length){ //Verifica se há funcionários
+        if(this.funcionarios.length == 0){ //Verifica se há funcionários
             console.log("Nenhum Funcionário Cadastrado")
         }
         else{
@@ -355,6 +355,7 @@ O que deseja modificar?
             this.clientes.sort(); //Cploca em ordem alfabética
             for(let i=0; i<this.cleintes.length; i++){
                 if(this.clientes[i].fidelizado){
+                    this.clientes[i].nomeCliente
                     console.log(this.clientes[i].nomeCliente+` - ${fidelizado}`)
                 }else{
                     console.log(this.clientes[i].nomeCliente)
@@ -375,8 +376,9 @@ O que deseja modificar?
 
         //Adiciona ao Array de Clientes
         var cliente = new Cliente(novoIDcliente,novoCliente,numPets)
-        this.funcionarios.push(novoFunc);
+        this.clientes.push(cliente);
         console.log("Cliente registrado.\n")
+        this.cadastrarPet(cliente)
         return cliente
     }
 
@@ -424,8 +426,8 @@ O que deseja modificar?
     cadastrarPet(cliente){
         //Cadastrar animal de um cliente já cadastrado
         var numPets = cliente.numPets.length
-        var n; //Pega a quantidade de animais do cliente para repetir o cadastro
-        for(n=0; n<numPets;n++){
+        //Pega a quantidade de animais do cliente para repetir o cadastro
+        for(var n=0; n<numPets;n++){
             //Pega o Nome do pet
             var nomepet = input("Digite o nome de um pet: ")
             //gera id pet
@@ -545,20 +547,24 @@ Status: ${consult.status}`)
                 //MARCAR CONSULTA
             case 'm':
                 //Pega o nome do cliente para consulta
-                var nomeCliente = input("Digite o nome do cliente: ")
+                var nomeCliente = input("Digite nome do Cliente: ")
                 //Verifica se o cliente já tem cadastro
                     //Não te cadastro
                 if(!(this.clientes.some(cliente => cliente.nomeCliente == nomeCliente))){
+                    console.log("Cliente ainda não cadastrado")
                     var cliente = this.cadastrarCliente() //Cadastra o Cliente
                     this.cadastrarPet(cliente)            //Cadastra o(s) animal(is) do cliente
+
+
                 }   //Tem cadastro
                 var existe = true
                 while(existe){ //Pergunta pra qual animal do cliente
                     var qualPet = input("Para qual animal será a consulta: ")
                     if(!(this.pets.some(pet => pet.nomePet == qualPet))){ //Verifica se o animal inserido está cadastrado
                         console.log("Este pet não está cadastrado.")
-                    }   //Estando cadatrado
-                    else{
+
+                    }       
+                    else{   //Estando cadastrado:
                         //Inserir data
                         var dia = input("Digite o dia da consulta: ")
                         var mes = input("Digite o mês da consulta 1-12: ")
@@ -575,6 +581,7 @@ Status: ${consult.status}`)
                         //Adicionando consulta na quatidade do cliente e verificando fidelidade
                         cliente.numConsultas++
                         if(cliente.numConsultas>4){
+                            
                             cliente.fidelizado = true
                         }
 
